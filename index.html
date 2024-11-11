@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIBLIOTECA MAESTRA</title>
+    <link rel="stylesheet" href="style.css"> <!-- Cierre de la etiqueta de enlace corregido -->
+    <style>
+        /* Estilos internos para el formulario */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 80%;
+            max-width: 500px;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #resultado {
+            margin-top: 20px;
+            color: #34495e;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BIBLIOTECA MAESTRA</h1>
+        <form id="materialForm" class="form-group">
+            <label for="nuevo_material">Ingrese material:</label>
+            <input type="text" id="nuevo_material" placeholder="Escribe algo aquí" class="input-field">
+            <div class="buttons">
+                <button type="button" class="btn" onclick="agregarMaterial()">Agregar</button>
+                <button type="button" class="btn" onclick="eliminarMaterial()">Eliminar</button>
+                <button type="button" class="btn" onclick="guardarMaterial()">Guardar</button>
+            </div>
+        </form>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function agregarMaterial() {
+            const material = document.getElementById("nuevo_material").value; 
+            if (material) {
+                alert("Material agregado: " + material);
+            } else {
+                alert("Por favor ingrese un material.");
+            }
+        }
+
+        function eliminarMaterial() {
+            const material = document.getElementById("nuevo_material").value; 
+            if (material) {
+                alert("Material eliminado: " + material);
+            } else {
+                alert("Por favor ingrese un material para eliminar.");
+            }
+        }
+
+        function guardarMaterial() {
+            const material = document.getElementById("nuevo_material").value; 
+            if (material) {
+                alert("Material guardado: " + material);
+            } else {
+                alert("Por favor ingrese un material para guardar.");
+            }
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIBLIOTECA MAESTRA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .input-field {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+        .search-button {
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .result-container {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            text-align: left;
+        }
+        .result-container img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .result-details {
+            font-size: 16px;
+            color: #333;
+        }
+        .result-details p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>BIBLIOTECA MAESTRA</h1>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" class="input-field" placeholder="Ingresa la referencia...">
+        <button onclick="searchMaterial()" class="search-button">Buscar</button>
+    </div>
+
+    <div id="resultContainer" class="result-container" style="display: none;">
+        <img id="materialImage" src="" alt="Imagen del material">
+        <div class="result-details">
+            <p id="materialRef"></p>
+            <p id="materialSize"></p>
+        </div>
+    </div>
+
+    <script>
+        function searchMaterial() {
+            const searchInput = document.getElementById("searchInput").value;
+            const resultContainer = document.getElementById("resultContainer");
+            const materialImage = document.getElementById("materialImage");
+            const materialRef = document.getElementById("materialRef");
+            const materialSize = document.getElementById("materialSize");
+
+            // Ejemplo de datos - puedes modificar o añadir más entradas
+            const materials = {
+    "58106": {
+        image: "ruta_a_la_imagen_58106.png",  // Cambia a la ruta de la imagen real
+        reference: "58106",
+        size: "1/4\" (6.5mm) x 16mm x 8mm"
+    },
+    "58105": {
+        image: "ruta_a_la_imagen_58105.png",  // Cambia a la ruta de la imagen real
+        reference: "58105",
+        size: "3/16\" (5mm) x 12mm x 7mm"
+                }
+                // Añadir más materiales aquí
+            };
+
+            if (materials[searchInput]) {
+                materialImage.src = materials[searchInput].image;
+                materialRef.textContent = "Referencia: " + materials[searchInput].reference;
+                materialSize.textContent = "Tamaño: " + materials[searchInput].size;
+                resultContainer.style.display = "flex";
+            } else {
+                alert("Material no encontrado. Por favor, verifica la referencia.");
+                resultContainer.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
